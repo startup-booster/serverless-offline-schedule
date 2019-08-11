@@ -26,6 +26,7 @@ export class ServelessOfflineSchedulerPlugin {
     this.hooks = {
       'schedule:run': offlineScheduler.scheduleEventsStandalone,
       'before:offline:start': offlineScheduler.scheduleEvents,
+      'before:offline:start:init': offlineScheduler.scheduleEvents,
     };
   }
 }
