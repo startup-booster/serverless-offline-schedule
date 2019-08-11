@@ -71,7 +71,7 @@ describe('utils', () => {
 
   describe('Invoke function', () => {
     it('Calls serveless invoke with correct arguments', () => {
-      const invoke = jest.spyOn(childProcess, 'execSync');
+      const invoke = jest.spyOn(childProcess, 'execSync').mockImplementation(() => Buffer.from(''));
       slsInvokeFunction('testFunction', { foo: 'bar' });
 
       expect(invoke).toBeCalledWith(
