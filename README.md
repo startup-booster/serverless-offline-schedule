@@ -1,6 +1,9 @@
 # serverless-offline-schedule
 
-[![Coverage Status](https://coveralls.io/repos/github/Meemaw/serverless-offline-schedule/badge.svg?branch=master)](https://coveralls.io/github/Meemaw/serverless-offline-schedule?branch=master) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![npm version](https://badge.fury.io/js/serverless-offline-schedule.svg)](https://badge.fury.io/js/serverless-offline-schedule)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Coverage Status](https://coveralls.io/repos/github/Meemaw/serverless-offline-schedule/badge.svg?branch=master)](https://coveralls.io/github/Meemaw/serverless-offline-schedule?branch=master)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 ## Install Plugin
 
@@ -19,6 +22,8 @@ plugins:
 
 ```sh
 λ → sls schedule
+Serverless: Starting serverless-offline-schedule in standalone process. Press CTRL + C to stop.
+Serverless: Scheduling [my-function] with [*/1 * * * *]
 ```
 
 #### Part of serverless-offline

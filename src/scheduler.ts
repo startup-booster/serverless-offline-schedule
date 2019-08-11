@@ -23,6 +23,7 @@ class OfflineScheduler {
   }
 
   public scheduleEventsStandalone = () => {
+    this.log('Starting serverless-offline-schedule in standalone process. Press CTRL + C to stop.');
     return Promise.resolve(this.scheduleEvents()).then(this.listenForTermination);
   };
 
