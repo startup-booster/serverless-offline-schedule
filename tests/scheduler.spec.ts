@@ -81,7 +81,7 @@ describe('OfflineScheduler', () => {
     scheduler.scheduleEventsStandalone();
     expect(log).nthCalledWith(
       1,
-      'Starting serverless-offline-schedule in standalone process. Press CTRL + C to stop.'
+      'Starting serverless-offline-schedule in standalone process. Press CTRL+C to stop.'
     );
     expect(log).nthCalledWith(
       2,

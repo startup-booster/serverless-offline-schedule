@@ -29,7 +29,7 @@ class OfflineScheduler {
   }
 
   public scheduleEventsStandalone = () => {
-    this.log('Starting serverless-offline-schedule in standalone process. Press CTRL + C to stop.');
+    this.log('Starting serverless-offline-schedule in standalone process. Press CTRL+C to stop.');
     return Promise.resolve(this.scheduleEvents()).then(this.listenForTermination);
   };
 
@@ -72,20 +72,18 @@ class OfflineScheduler {
   };
 
   private listenForTermination = () => {
-    // SIGINT will be usually sent when user presses ctrl+c
+    // SIGINT: usually sent when user presses CTRL+C
     const waitForSigInt = new Promise(resolve => {
       process.on('SIGINT', () => resolve('SIGINT'));
     });
 
-    // SIGTERM is a default termination signal in many cases,
-    // for example when "killing" a subprocess spawned in node
-    // with child_process methods
+    // SIGTERM: default termination signal in many cases
     const waitForSigTerm = new Promise(resolve => {
       process.on('SIGTERM', () => resolve('SIGTERM'));
     });
 
     return Promise.race([waitForSigInt, waitForSigTerm]).then(command => {
-      this.log(`Got ${command} signal. Serverless Offline Scheduleer Halting...`);
+      this.log(`Got ${command} signal. Stopping serverless-offline-scheduleer...`);
       process.exit(0);
     });
   };
