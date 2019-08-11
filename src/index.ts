@@ -13,7 +13,7 @@ export class ServelessOfflineSchedulerPlugin {
 
     this.commands = {
       schedule: {
-        usage: 'Run scheduled lambadas locally',
+        usage: 'Run scheduled lambdas locally',
         lifecycleEvents: ['run'],
       },
     };
