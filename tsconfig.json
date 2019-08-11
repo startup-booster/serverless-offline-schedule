@@ -4,7 +4,8 @@
     "rootDir": ".",
     "target": "es6",
     "outDir": "dist",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "typeRoots": ["./typings", "node_modules/@types"]
   },
   "exclude": ["node_modules"]
 }

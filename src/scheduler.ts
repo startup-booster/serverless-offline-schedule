@@ -41,12 +41,12 @@ class OfflineScheduler {
       this.log(`Scheduling [${functionName}] cron: [${cron}] input: ${JSON.stringify(input)}`);
 
       schedule.scheduleJob(cron, () => {
-        const func = slsInvokeFunction(functionName, input);
-        if (func === undefined) {
-          this.log(`Unable to find source for function [${functionName}]`);
-          return;
+        try {
+          slsInvokeFunction(functionName, input);
+          this.log(`Succesfully invoked scheduled function: [${functionName}]`);
+        } catch (err) {
+          this.log(`Failed to execute scheduled function: [${functionName}] Error: ${err}`);
         }
-        this.log(`Succesfully invoked scheduled function: [${functionName}]`);
       });
     });
   };
