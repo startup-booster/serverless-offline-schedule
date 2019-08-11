@@ -1,0 +1,43 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["import"],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": [
+      2,
+      {
+        "allowExpressions": true
+      }
+    ],
+    "@typescript-eslint/no-use-before-define": [
+      2,
+      {
+        "functions": false,
+        "classes": false
+      }
+    ],
+    "@typescript-eslint/camelcase": 0,
+    "@typescript-eslint/prefer-interface": 0,
+    "@typescript-eslint/no-unused-vars": [
+      2,
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "import/order": [
+      1,
+      {
+        "newlines-between": "always",
+        "groups": ["builtin", ["external", "internal"], "parent", ["sibling", "index"]]
+      }
+    ]
+  }
+}
