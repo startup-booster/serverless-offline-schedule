@@ -23,7 +23,9 @@ plugins:
 ```sh
 λ → sls schedule
 Serverless: Starting serverless-offline-schedule in standalone process. Press CTRL + C to stop.
-Serverless: Scheduling [my-function] with [*/1 * * * *]
+Serverless: Scheduling [schedule-function] cron: [*/1 * * * *] input: {"scheduler":"1-minute"}
+...
+Serverless: Succesfully invoked scheduled function: [my-function]
 ```
 
 #### Part of serverless-offline
@@ -33,5 +35,7 @@ Serverless: Scheduling [my-function] with [*/1 * * * *]
 ```sh
 λ → sls offline
 ...
-Serverless: Scheduling [my-function] with [*/1 * * * *]
+Serverless: Scheduling [schedule-function] cron: [*/1 * * * *] input: {"scheduler":"1-minute"}
+...
+Serverless: Succesfully invoked scheduled function: [my-function]
 ```

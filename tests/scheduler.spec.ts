@@ -64,7 +64,9 @@ describe('OfflineScheduler', () => {
     });
 
     scheduler.scheduleEvents();
-    expect(log).toBeCalledWith('Scheduling [schedule-function] with [*/1 * * * *]');
+    expect(log).toBeCalledWith(
+      'Scheduling [schedule-function] cron: [*/1 * * * *] input: {"scheduler":"1-minute"}'
+    );
     expect(scheduleJob).toBeCalledTimes(1);
   });
 
@@ -81,7 +83,10 @@ describe('OfflineScheduler', () => {
       1,
       'Starting serverless-offline-schedule in standalone process. Press CTRL + C to stop.'
     );
-    expect(log).nthCalledWith(2, 'Scheduling [schedule-function] with [*/1 * * * *]');
+    expect(log).nthCalledWith(
+      2,
+      'Scheduling [schedule-function] cron: [*/1 * * * *] input: {"scheduler":"1-minute"}'
+    );
     expect(scheduleJob).toBeCalledTimes(1);
   });
 });

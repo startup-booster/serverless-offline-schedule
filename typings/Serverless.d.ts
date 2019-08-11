@@ -35,7 +35,7 @@ declare namespace Serverless {
     extraServicePath?: string;
   }
 
-  type Event = { [type: string]: { rate: string; input: object } };
+  type Event = { [type: string]: { rate: string; input?: object } };
 
   interface Function {
     handler: string;

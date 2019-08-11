@@ -12,6 +12,12 @@ type SchedulerConfig = {
   functionProvider: FunctionProvider;
 };
 
+type FunctionConfiguration = {
+  input: object;
+  functionName: string;
+  cron: string;
+};
+
 class OfflineScheduler {
   private log: (message: string) => void;
   private functionProvider: FunctionProvider;
@@ -32,7 +38,7 @@ class OfflineScheduler {
 
     configurations.forEach(functionConfiguration => {
       const { functionName, cron, input } = functionConfiguration;
-      this.log(`Scheduling [${functionName}] with [${cron}]`);
+      this.log(`Scheduling [${functionName}] cron: [${cron}] input: ${JSON.stringify(input)}`);
 
       schedule.scheduleJob(cron, () => {
         const func = slsInvokeFunction(functionName, input);
@@ -40,12 +46,12 @@ class OfflineScheduler {
           this.log(`Unable to find source for function [${functionName}]`);
           return;
         }
-        this.log(`Succesfully run scheduled function: [${functionName}]`);
+        this.log(`Succesfully invoked scheduled function: [${functionName}]`);
       });
     });
   };
 
-  private getFunctionConfigurations = () => {
+  private getFunctionConfigurations = (): FunctionConfiguration[] => {
     const functions = this.functionProvider();
 
     const scheduleConfigurations = Object.keys(functions).map(functionName => {
@@ -57,7 +63,7 @@ class OfflineScheduler {
         return {
           functionName,
           cron: convertExpressionToCron(event['schedule'].rate),
-          input: event['schedule'].input,
+          input: event['schedule'].input || {},
         };
       });
     });
