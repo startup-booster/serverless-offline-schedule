@@ -60,9 +60,13 @@ class OfflineScheduler {
       const scheduleEvents = events.filter(event => event.hasOwnProperty('schedule'));
 
       return scheduleEvents.map(event => {
+        let rates = event.schedule.rate;
+        if (typeof rates === 'object') {
+          rates = rates[0]
+        }
         return {
           functionName,
-          cron: convertExpressionToCron(event['schedule'].rate),
+          cron: convertExpressionToCron(rates),
           input: event['schedule'].input || {},
         };
       });
